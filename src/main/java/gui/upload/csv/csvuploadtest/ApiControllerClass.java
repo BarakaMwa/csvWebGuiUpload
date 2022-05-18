@@ -1,6 +1,7 @@
 package gui.upload.csv.csvuploadtest;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +17,14 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/api/csv")
 @Controller
 public class ApiControllerClass {
+
+    private final ServiceClass fileService;
+
     @Autowired
-    ServiceClass fileService;
+    public ApiControllerClass(ServiceClass fileService) {
+        this.fileService = fileService;
+    }
+
     @PostMapping("/upload")
     public ResponseEntity<ResponseClass> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
@@ -37,7 +44,7 @@ public class ApiControllerClass {
     @GetMapping("/tutorials")
     public ResponseEntity<List<ModelEntity>> getAllTutorials() {
         try {
-            List<ModelEntity> tutorials = fileService.getAllTutorials();
+            List<ModelEntity> tutorials = fileService.getAllModelEntities();
             if (tutorials.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }

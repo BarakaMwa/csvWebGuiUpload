@@ -7,10 +7,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-public class ServiceClass {
+public class ServiceClass{
+
+
+    private final RepositoryClass repository;
 
     @Autowired
-    RepositoryClass repository;
+    public ServiceClass(RepositoryClass repository) {
+        this.repository = repository;
+    }
+
     public void save(MultipartFile file) {
         try {
             List<ModelEntity> tutorials = CSVHelper.csvToTutorials(file.getInputStream());
@@ -19,7 +25,9 @@ public class ServiceClass {
             throw new RuntimeException("fail to store csv data: " + e.getMessage());
         }
     }
-    public List<ModelEntity> getAllTutorials() {
+
+
+    public List<ModelEntity> getAllModelEntities() {
         return repository.findAll();
     }
 }

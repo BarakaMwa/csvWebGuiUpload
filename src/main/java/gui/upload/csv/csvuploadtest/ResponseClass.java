@@ -23,10 +23,11 @@ public class ResponseClass {
     public void setMessage(String message) {
         this.message = message;
     }
-    public String getError() {
+    public String getStatus() {
         return status;
     }
-    public void setError(String message) {
+    public void setStatus(String message) {
         this.status = message;
     }
 }
+
