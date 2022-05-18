@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-@CrossOrigin("http://localhost:8081")
+@CrossOrigin("http://localhost:8082")
 @RequestMapping("/api/csv")
 @Controller
-public class ControllerClass {
+public class ApiControllerClass {
     @Autowired
     ServiceClass fileService;
     @PostMapping("/upload")
